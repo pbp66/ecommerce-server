@@ -1,4 +1,4 @@
-import { Category } from '../models';
+import Category from '../models';
 
 const categoryData = [
   {
@@ -20,4 +20,4 @@ const categoryData = [
 
 const seedCategories = () => Category.bulkCreate(categoryData);
 
-export { seedCategories };
+export default categoryData;

@@ -1,4 +1,4 @@
-import { Tag } from '../models';
+import Tag from '../models';
 
 const tagData = [
   {
@@ -29,4 +29,4 @@ const tagData = [
 
 const seedTags = () => Tag.bulkCreate(tagData);
 
-export { seedTags };
+export default seedTags;
