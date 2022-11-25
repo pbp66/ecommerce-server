@@ -1,8 +1,8 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/connection.js';
-import { Tag } from './Tag.js';
+import Tag from './Tag.js';
 
-class ProductTag extends Model { }
+export default class ProductTag extends Model { }
 
 ProductTag.init(
 	{
@@ -31,5 +31,3 @@ ProductTag.init(
 		modelName: 'product_tag',
 	}
 );
-
-export { ProductTag };

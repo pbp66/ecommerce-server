@@ -7,4 +7,4 @@ router.use((req, res) => {
   res.send("<h1>Wrong Route!</h1>")
 });
 
-export { router };
+export default router;

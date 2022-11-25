@@ -93,4 +93,4 @@ router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
 });
 
-module.exports = router;
+export default router;

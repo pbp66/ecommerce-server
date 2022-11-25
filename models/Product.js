@@ -1,9 +1,9 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/connection.js';
-import { Category } from './Category.js';
+import Category from './Category.js';
 
 // Initialize Product model (table) by extending off Sequelize's Model class
-class Product extends Model { }
+export default class Product extends Model { }
 
 // set up fields and rules for Product model
 Product.init(
@@ -52,5 +52,3 @@ Product.init(
 		modelName: 'product',
 	}
 );
-
-export { Product };

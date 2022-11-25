@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/connection.js';
 
-class Category extends Model { }
+export default class Category extends Model {}
 
 Category.init(
 	{
@@ -13,7 +13,7 @@ Category.init(
 		},
 		category_name: {
 			type: DataTypes.STRING,
-			allowNull: false;
+			allowNull: false
 		}
 	},
 	{
@@ -24,5 +24,3 @@ Category.init(
 		modelName: 'category',
 	}
 );
-
-export { Category };
