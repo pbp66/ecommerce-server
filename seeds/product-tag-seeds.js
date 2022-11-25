@@ -1,4 +1,4 @@
-import ProductTag from '../models';
+import { ProductTag } from '../models';
 
 const productTagData = [
   {
