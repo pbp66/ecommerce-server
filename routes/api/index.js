@@ -1,4 +1,6 @@
-import { Router as router } from 'express';
+import express from "express";
+const router = express.Router();
+
 import categoryRoutes from './category-routes';
 import productRoutes from './product-routes';
 import tagRoutes from './tag-routes';
