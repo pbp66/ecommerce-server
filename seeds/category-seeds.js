@@ -1,4 +1,4 @@
-const { Category } = require('../models');
+import { Category } from '../models';
 
 const categoryData = [
   {
@@ -20,4 +20,4 @@ const categoryData = [
 
 const seedCategories = () => Category.bulkCreate(categoryData);
 
-module.exports = seedCategories;
+export { seedCategories };

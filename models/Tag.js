@@ -1,6 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-
-const sequelize = require('../config/connection.js');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/connection.js';
 
 class Tag extends Model {}
 
@@ -17,4 +16,4 @@ Tag.init(
   }
 );
 
-module.exports = Tag;
+export { Tag };
