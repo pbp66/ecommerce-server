@@ -23,6 +23,17 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
 	// find one category by its `id` value
+	const ids = (await Category.findAll(
+		{
+			attributes: ['id']
+		}
+	)).map(element => element.dataValues.id);
+	if (!(ids.includes(Number(req.params.id)))) {
+		res.status(400).send(`<h1>400 Bad Request!</h1>
+	<h3>Specified id does not exist.</h3>`);
+		return;
+	}
+
 	try {
 		const category = await Category.findByPk(
 			req.params.id, 
