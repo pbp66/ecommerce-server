@@ -108,10 +108,21 @@ router.put('/:id', (req, res) => {
 		});
 });
 
-router.delete('/:id', (req, res) => {
-	// delete one product by its `id` value
-	console.log(req.body);
-	console.log(req.params);
+router.delete('/:id', async (req, res) => {
+	// delete a product by its `id` value
+	try {
+		await Product.destroy(
+			{ 
+				where: { 
+					id: req.params.id 
+				} 
+			}
+		);
+		res.status(204).send();
+	} catch(err) {
+		console.log(err);
+		res.status(500).send('500 Internal Server Error');
+	}
 });
 
 export default router;
