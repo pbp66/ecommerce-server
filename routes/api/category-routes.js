@@ -7,6 +7,7 @@ import { Category, Product } from '../../models';
 router.get('/', (req, res) => {
 	// find all categories
 	// be sure to include its associated Products
+	console.log('Response to /api/categories:');
 	console.log(req.body);
 });
 
