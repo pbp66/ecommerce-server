@@ -11,8 +11,8 @@ router.get('/', async (req, res) => {
 		const products = await Product.findAll({ include: [Category, Tag]});
 		res.status(200).json(products).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
@@ -37,8 +37,8 @@ router.get('/:id', async (req, res) => {
 		);
 		res.status(200).json(product).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
 		})
 		.then((productTagIds) => res.status(200).json(productTagIds))
 		.catch((err) => {
-			console.log(err);
+			console.error(err);
 			res.status(400).json(err);
 		});
 });
@@ -114,7 +114,7 @@ router.put('/:id', (req, res) => {
 		})
 		.then((updatedProductTags) => res.json(updatedProductTags))
 		.catch((err) => {
-			// console.log(err);
+			// console.error(err);
 			res.status(400).json(err);
 		});
 });
@@ -131,8 +131,8 @@ router.delete('/:id', async (req, res) => {
 		);
 		res.status(204).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 

@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 		const tags = await Tag.findAll({ include: Product});
 		res.status(200).json(tags).send();
 	} catch(err) {
-		console.log(err);
+		console.error(err);
 		res.status(500).send('500 Internal Server Error');
 	}
 });
@@ -35,8 +35,8 @@ router.get('/:id', async (req, res) => {
 		);
 		res.status(200).json(tag).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
@@ -52,8 +52,8 @@ router.post('/', async (req, res) => {
 		const newTag = await Tag.create(req.body);
 		res.status(201).json(newTag).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
@@ -74,8 +74,8 @@ router.post('/:id', async (req, res) => {
 		);
 		res.status(201).json(newTag).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
@@ -113,8 +113,8 @@ router.put('/:id', async (req, res) => {
 			}
 
 		} catch(err) {
-			console.log(err);
-			res.status(500).send('500 Internal Server Error');
+			console.error(err);
+			res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 		}
 	} else {
 		try {
@@ -126,8 +126,8 @@ router.put('/:id', async (req, res) => {
 			);
 			res.status(201).json(newTag).send();
 		} catch(err) {
-			console.log(err);
-			res.status(500).send('500 Internal Server Error');
+			console.error(err);
+			res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 		}
 	}
 });
@@ -144,8 +144,8 @@ router.delete('/:id', async (req, res) => {
 		);
 		res.status(204).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 

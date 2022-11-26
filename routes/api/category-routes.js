@@ -1,6 +1,5 @@
 import express from "express";
 import { Sequelize } from "sequelize";
-import sequelize from "../../config/connection";
 const router = express.Router();
 import { Category, Product } from '../../models';
 
@@ -16,8 +15,8 @@ router.get('/', async (req, res) => {
 			);
 		res.status(200).json(categories).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
@@ -43,8 +42,8 @@ router.get('/:id', async (req, res) => {
 		);
 		res.status(200).json(category).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
@@ -60,8 +59,14 @@ router.post('/', async (req, res) => {
 		let newCategory = await Category.create(req.body);
 		res.status(201).json(newCategory).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		if (err instanceof Sequelize.ValidationError) {
+			res.status(400).send(`<h1>400 Bad Request!</h1>
+			<h3>Specified id does not exist.</h3>`)
+		}
+		else {
+			res.status(500).send(`<h1>500 Internal Server Error</h1>`);
+		}
+		console.error(err);
 	}
 });
 
@@ -82,8 +87,8 @@ router.post('/:id', async (req, res) => {
 		);
 		res.status(201).json(newCategory).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
@@ -121,8 +126,8 @@ router.put('/:id', async (req, res) => {
 			}
 
 		} catch(err) {
-			console.log(err);
-			res.status(500).send('500 Internal Server Error');
+			console.error(err);
+			res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 		}
 	} else {
 		try {
@@ -134,8 +139,8 @@ router.put('/:id', async (req, res) => {
 			);
 			res.status(201).json(newCategory).send();
 		} catch(err) {
-			console.log(err);
-			res.status(500).send('500 Internal Server Error');
+			console.error(err);
+			res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 		}
 	}
 });
@@ -152,8 +157,8 @@ router.delete('/:id', async (req, res) => {
 		);
 		res.status(204).send();
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('500 Internal Server Error');
+		console.error(err);
+		res.status(500).send(`<h1>500 Internal Server Error</h1>`);
 	}
 });
 
