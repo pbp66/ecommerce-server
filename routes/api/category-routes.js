@@ -1,14 +1,19 @@
 import express from "express";
+import { Sequelize } from "sequelize";
+import sequelize from "../../config/connection";
 const router = express.Router();
 import { Category, Product } from '../../models';
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
-	// find all categories
-	// be sure to include its associated Products
-	console.log('Response to /api/categories:');
-	console.log(req.body);
+router.get('/', async (req, res) => {
+	try {
+		const categories = await Category.findAll({ include: Product});
+		res.status(200).json(categories).send();
+	} catch(err) {
+		console.log(err);
+		res.status(500).send('500 Internal Server Error');
+	}
 });
 
 router.get('/:id', (req, res) => {
