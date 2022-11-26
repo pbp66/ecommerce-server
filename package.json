@@ -1,29 +1,34 @@
 {
-  "name": "module-13-challenge-orm",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --experimental-modules --es-module-specifier-resolution=node server",
-    "dev": "npx nodemon server",
-    "seed": "node --experimental-modules --es-module-specifier-resolution=node seeds"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:pbp66/ecommerce-server.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "nodemon": "^2.0.3"
-  },
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.25.8"
-  }
+	"name": "module-13-challenge-orm",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node --experimental-modules --es-module-specifier-resolution=node server",
+		"dev": "npx nodemon server",
+		"seed": "node --experimental-modules --es-module-specifier-resolution=node seeds"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:pbp66/ecommerce-server.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"nodemon": "^2.0.3"
+	},
+	"dependencies": {
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"mysql2": "^2.3.3",
+		"sequelize": "^6.25.8"
+	},
+	"nodemonConfig": {
+		"execMap": {
+			"js": "node --experimental-modules --es-module-specifier-resolution=node"
+		}
+	}
 }
