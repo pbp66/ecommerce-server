@@ -1,9 +1,13 @@
 import * as express from 'express';
 import routes from './routes';
-// import sequelize connection
+import sequelize from './config/connection';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+const enable = true;
+const isProduction = process.env.NODE_ENV === "production";
+const enableForce = isProduction && enable; 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -11,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // sync sequelize models to the database, then turn on the server
+sequelize.sync({ force: enableForce});
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);
 });
