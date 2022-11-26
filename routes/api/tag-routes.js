@@ -4,17 +4,29 @@ import { Tag, Product, ProductTag } from '../../models';
 
 // The `/api/tags` endpoint
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 	// find all tags
-	// be sure to include its associated Product data
-	console.log(req.body);
+	try {
+		const tags = await Tag.findAll({ include: Product});
+		res.status(200).json(tags).send();
+	} catch(err) {
+		console.log(err);
+		res.status(500).send('500 Internal Server Error');
+	}
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
 	// find a single tag by its `id`
-	// be sure to include its associated Product data
-	console.log(req.body);
-	console.log(req.params);
+	try {
+		const tag = await Tag.findByPk(
+			req.params.id, 
+			{ include: Product }
+		);
+		res.status(200).json(tag).send();
+	} catch(err) {
+		console.log(err);
+		res.status(500).send('500 Internal Server Error');
+	}
 });
 
 router.post('/', (req, res) => {
