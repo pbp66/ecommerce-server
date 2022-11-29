@@ -1,7 +1,7 @@
-import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/connection.js';
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/connection.js";
 
-export default class Tag extends Model { }
+export default class Tag extends Model {}
 
 Tag.init(
 	{
@@ -9,17 +9,17 @@ Tag.init(
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
-			autoIncrement: true
+			autoIncrement: true,
 		},
 		tag_name: {
 			type: DataTypes.STRING,
-		}
+		},
 	},
 	{
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		modelName: 'tag',
+		modelName: "tag",
 	}
 );

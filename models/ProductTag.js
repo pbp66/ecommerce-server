@@ -1,8 +1,8 @@
-import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/connection.js';
-import Tag from './Tag.js';
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/connection.js";
+import Tag from "./Tag.js";
 
-export default class ProductTag extends Model { }
+export default class ProductTag extends Model {}
 
 ProductTag.init(
 	{
@@ -10,24 +10,24 @@ ProductTag.init(
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
-			autoIncrement:true
+			autoIncrement: true,
 		},
 		product_id: {
-			type:DataTypes.INTEGER
+			type: DataTypes.INTEGER,
 		},
 		tag_id: {
 			type: DataTypes.INTEGER,
 			references: {
 				model: Tag,
-				key: "id"
-			}
-		}
+				key: "id",
+			},
+		},
 	},
 	{
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		modelName: 'product_tag',
+		modelName: "product_tag",
 	}
 );
