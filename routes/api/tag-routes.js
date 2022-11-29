@@ -8,13 +8,11 @@ router.get("/", async (req, res) => {
 	// find all tags
 	try {
 		const tags = await Tag.findAll({ include: Product });
-
 		if (tags.length === 0) {
 			res.status(404).send(`<h1>404 Data Not Found!</h1>
 	<h3>No Tags Available</h3>`);
 			return;
 		}
-
 		res.status(200).json(tags).send();
 	} catch (err) {
 		console.error(err);

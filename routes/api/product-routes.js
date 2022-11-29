@@ -9,13 +9,11 @@ router.get("/", async (req, res) => {
 	// find all products
 	try {
 		const products = await Product.findAll({ include: [Category, Tag] });
-
 		if (products.length === 0) {
 			res.status(404).send(`<h1>404 Data Not Found!</h1>
-	<h3>No Tags Available</h3>`);
+	<h3>No Products Available</h3>`);
 			return;
 		}
-
 		res.status(200).json(products).send();
 	} catch (err) {
 		console.error(err);
@@ -26,11 +24,9 @@ router.get("/", async (req, res) => {
 // get one product
 router.get("/:id", async (req, res) => {
 	// find a single product by its `id`
-	const ids = (
-		await Product.findAll({
-			attributes: ["id"],
-		})
-	).map((element) => element.dataValues.id);
+	const ids = (await Product.findAll({ attributes: ["id"] })).map(
+		(element) => element.dataValues.id
+	);
 	if (!ids.includes(Number(req.params.id))) {
 		res.status(400).send(`<h1>400 Bad Request!</h1>
 	<h3>Specified id does not exist.</h3>`);
