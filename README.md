@@ -43,7 +43,23 @@ Git Clone this repository onto your local machine. Navigate to the downloaded pr
 
 ## Usage
 
-From the command line, run `npm start`. This will start the local server. A message will appear showing the PORT being used on your local machine as well as a URL to access the server. To use the server, use the listed routes below #TODO.
+From the command line, run `npm start`. This will start the local server. A message will appear showing the PORT being used on your local machine as well as a URL to access the server. To view the api routes, launch a web browser and navigate to [localhost on PORT 3001](https://localhost:3001). If your local machine specifies a different port name, navigate to that link instead to view a webpage with the listed api routes.
+
+Additionally, you may view static screenshots of the documentation below:
+
+![](./assets/readme/api-routes-documentation-demo-1.png)
+
+![](./assets/readme/api-routes-documentation-demo-2.png)
+
+![](./assets/readme/api-routes-documentation-demo-3.png)
+
+![](./assets/readme/api-routes-documentation-demo-4.png)
+
+![](./assets/readme/api-routes-documentation-demo-5.png)
+
+![](./assets/readme/api-routes-documentation-demo-6.png)
+
+![](./assets/readme/api-routes-documentation-demo-7.png)
 
 ## License
 
