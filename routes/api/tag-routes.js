@@ -86,15 +86,10 @@ router.put("/:id", async (req, res) => {
 	 * 		tag_name: "Tag"
 	 * 	}
 	 */
-	const idData = await Tag.findAll({
-		attributes: ["id"],
-	});
-	const ids = idData.map((id) => {
-		const { id: plainId } = id.get({ plain: true });
-		return Number(plainId);
-	});
-	console.log(ids);
-	console.log(req.params.id);
+	const ids = (await Tag.findAll({ attributes: ["id"] })).map(
+		(element) => element.dataValues.id
+	);
+
 	if (ids.includes(Number(req.params.id))) {
 		try {
 			const updatedTag = await Tag.update(
