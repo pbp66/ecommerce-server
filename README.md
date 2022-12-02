@@ -2,7 +2,7 @@
 
 ## Description
 
-Small scale backend server for e-commerce
+Small scale backend server for e-commerce using express and sequelize to provide the backend interaction for API requests. The database contains tables for categories, products, tags, and a product_tag. The product_tag table is used to associate products and tags with each other since both models can contain multiples of each other. Sequelize made interacting with the database significantly trivial compared to implementing several strict queries using the mysql2 package.
 
 **User Story**
 
