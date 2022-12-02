@@ -86,10 +86,11 @@ router.put("/:id", async (req, res) => {
 	 * 		tag_name: "Tag"
 	 * 	}
 	 */
-	const ids = await Tag.findAll({
-		attributes: ["id"],
-	});
-	if (ids.includes(req.params.id)) {
+	const ids = (await Tag.findAll({ attributes: ["id"] })).map(
+		(element) => element.dataValues.id
+	);
+
+	if (ids.includes(Number(req.params.id))) {
 		try {
 			const updatedTag = await Tag.update(
 				{ tag_name: req.body.tag_name },
@@ -122,7 +123,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
 	// delete on tag by its `id` value
 	try {
-		const exists = await Tag.findOne({ where: { id } });
+		const exists = await Tag.findOne({ where: { id: req.params.id } });
 		if (exists) {
 			await Tag.destroy({ where: { id: req.params.id } });
 			res.status(204).send();
